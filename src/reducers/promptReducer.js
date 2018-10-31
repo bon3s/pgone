@@ -1,4 +1,4 @@
-import { PROMPT_VISIBLE } from '../actions/numberInputActions';
+import { PROMPT_VISIBLE } from '../actions/promptActions';
 
 
 const initial = {

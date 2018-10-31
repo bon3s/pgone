@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         padding: 15,
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 10,
+
     },
     textStyle: {
         color: '#000',
@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => ({
     visible: state.promptReducer.visible,
     msg: state.promptReducer.msg,
-})
+});
 
 export default connect(mapStateToProps)(Prompt);

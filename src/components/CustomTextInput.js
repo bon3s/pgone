@@ -1,32 +1,31 @@
 import React, { Component } from 'react';
 import {
     View,
-    TextInput,
-    StyleSheet
+    StyleSheet,
+    TextInput
 } from 'react-native';
 
-
-class NumberInput extends Component {
+class CustomTextInput extends Component {
 
     constructor(props) {
         super(props);
     }
 
     validateInput(text) {
-        const reg = /^\d+$/;
+        const reg = /[a-zA-Z]+/;
         if (reg.test(text)) {
             this.props.onChange(text);
         }
         else {
-            this.props.onError(true, "You can enter only numbers!");
+            this.props.onError(true, "You can enter only letters!");
         }
     }
+
     render() {
         return (
             <View style={styles.viewStyle}>
                 <TextInput
                     style={styles.textInputStyle}
-                    keyboardType='numeric'
                     value={this.props.value ? this.props.value : ''}
                     onChangeText={(text) => { this.validateInput(text); }}
                 />
@@ -43,7 +42,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         borderColor: '#ff0000',
-        width: '30%',
+        width: '60%',
     },
     viewStyle: {
         padding: 20,
@@ -52,4 +51,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default NumberInput;
+export default CustomTextInput; 

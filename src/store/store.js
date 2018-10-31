@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from '../reducers'
-import promptReducer from "../reducers/promptReducer";
+
 
 const initialState = {
     numberInputReducer: {
@@ -10,6 +10,9 @@ const initialState = {
     promptReducer: {
         visible: false,
         msg: ''
+    },
+    customTextInputReducer: {
+        customTextInput: ''
     }
 }
 
