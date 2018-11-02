@@ -26,7 +26,7 @@ class CustomTextInputPage extends Component {
     render() {
         return (
             <View>
-                <HeaderAlt headerText="pg_one" />
+                <HeaderAlt headerText="pg_one" history={this.props.history} />
                 <Prompt />
                 <CustomTextInput onError={(visible, value) => {
                     this.props.dispatch(promptVisible(visible, value));

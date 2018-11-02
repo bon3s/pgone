@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const Backbutton = ({ onPress }) => {
+const BackButton = ({ onPress }) => {
     const { buttonStyle, textStyle } = styles;
     return (
         <TouchableOpacity onPress={onPress} style={buttonStyle}>
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Backbutton;
+export default BackButton;

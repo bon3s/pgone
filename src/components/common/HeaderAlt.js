@@ -1,15 +1,16 @@
 // Import libraries for making a component
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import Backbutton from './BackButton';
+import BackButton from './BackButton';
 
-const HeaderAlt = (props) => {
+
+const HeaderAlt = ({ history, headerText }) => {
     const { textStyle, viewStyle } = styles;
 
     return (
         <View style={viewStyle}>
-            <Backbutton onPress={console.log('test')} />
-            <Text style={textStyle}>{props.headerText}</Text>
+            <BackButton onPress={() => { history.goBack() }} />
+            <Text style={textStyle}>{headerText}</Text>
         </View>
     );
 };
