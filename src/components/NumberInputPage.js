@@ -17,6 +17,7 @@ class NumberInputPage extends Component {
 
     handleButtonPress() {
         if (this.props.numberInput != '' && this.props.numberInput !== 0 && this.props.numberInput != null) {
+            this.props.dispatch(promptVisible(false, ''));
             this.props.history.push('/CustomTextInputPage');
         }
         else {

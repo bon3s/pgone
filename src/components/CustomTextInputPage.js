@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import Button from './common/Button';
-import Header from './common/Header';
+import HeaderAlt from './common/HeaderAlt';
 import Prompt from './common/Prompt';
 import CustomTextInput from './CustomTextInput';
 import { connect } from 'react-redux';
@@ -15,7 +15,7 @@ class CustomTextInputPage extends Component {
     }
 
     handleButtonPress() {
-        if (this.props.customTextInput != '' && this.props.customTextInput !== 0 && this.props.customTextInput != null) {
+        if (this.props.customTextInput != '' && this.props.customTextInput != null) {
             this.props.history.push('/CustomTextInputPage');
         }
         else {
@@ -26,7 +26,7 @@ class CustomTextInputPage extends Component {
     render() {
         return (
             <View>
-                <Header headerText="pg_one" />
+                <HeaderAlt headerText="pg_one" />
                 <Prompt />
                 <CustomTextInput onError={(visible, value) => {
                     this.props.dispatch(promptVisible(visible, value));

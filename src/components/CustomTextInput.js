@@ -11,23 +11,13 @@ class CustomTextInput extends Component {
         super(props);
     }
 
-    validateInput(text) {
-        const reg = /[a-zA-Z]+/;
-        if (reg.test(text)) {
-            this.props.onChange(text);
-        }
-        else {
-            this.props.onError(true, "You can enter only letters!");
-        }
-    }
-
     render() {
         return (
             <View style={styles.viewStyle}>
                 <TextInput
                     style={styles.textInputStyle}
                     value={this.props.value ? this.props.value : ''}
-                    onChangeText={(text) => { this.validateInput(text); }}
+                    onChangeText={(text) => { this.props.onChange(text) }}
                 />
             </View>
         );

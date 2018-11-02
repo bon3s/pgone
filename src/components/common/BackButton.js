@@ -1,17 +1,15 @@
 import React from 'react';
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const Button = ({ onPress, children }) => {
+const Backbutton = ({ onPress }) => {
     const { buttonStyle, textStyle } = styles;
-
     return (
         <TouchableOpacity onPress={onPress} style={buttonStyle}>
-            <Text style={textStyle}>
-                {children}
-            </Text>
+            <Text style={textStyle}>Back</Text>
         </TouchableOpacity>
     );
-};
+}
+
 
 const styles = StyleSheet.create({
     textStyle: {
@@ -23,14 +21,15 @@ const styles = StyleSheet.create({
         paddingBottom: 10,
     },
     buttonStyle: {
-        backgroundColor: '#ff0000',
+        backgroundColor: '#009999',
         borderRadius: 5,
         borderWidth: 1,
-        borderColor: '#ff0000',
-        alignSelf: 'center',
-        paddingHorizontal: 30,
-        paddingVertical: 5
+        borderColor: '#ffffff',
+        paddingHorizontal: 20,
+        paddingVertical: 0,
+        position: 'absolute',
+        left: 10,
     }
 });
 
-export default Button;
+export default Backbutton;

@@ -1,4 +1,4 @@
-import { SET_CUSTOM_TEXT_INPUT } from '../actions/customTextInputActions'
+import { SET_CUSTOM_TEXT_INPUT } from '../actions/customTextInputActions';
 
 const initial = {
     customTextInput: ''
