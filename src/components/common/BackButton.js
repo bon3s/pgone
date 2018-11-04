@@ -10,7 +10,6 @@ const BackButton = ({ onPress }) => {
     );
 }
 
-
 const styles = StyleSheet.create({
     textStyle: {
         alignSelf: 'center',
