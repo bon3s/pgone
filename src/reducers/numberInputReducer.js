@@ -7,10 +7,10 @@ const initial = {
 const numberInputReducer = (state = initial, action) => {
     switch (action.type) {
         case SET_NUMBER_INPUT:
-            return { ...state, numberInput: action.value }
+            return { ...state, numberInput: Number(action.value) }
         default:
             return state;
     }
 }
 
-export default numberInputReducer
+export default numberInputReducer;

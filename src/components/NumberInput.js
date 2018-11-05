@@ -27,7 +27,7 @@ class NumberInput extends Component {
                 <TextInput
                     style={styles.textInputStyle}
                     keyboardType='numeric'
-                    value={this.props.value ? this.props.value : ''}
+                    value={this.props.value ? String(this.props.value) : ''}
                     onChangeText={(text) => { this.validateInput(text); }}
                 />
             </View>

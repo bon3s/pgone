@@ -3,13 +3,14 @@ import { PROMPT_VISIBLE } from '../actions/promptActions';
 
 const initial = {
     visible: false,
-    msg: ''
+    msg: '',
+    success: false,
 }
 
 const promptReducer = (state = initial, action) => {
     switch (action.type) {
         case PROMPT_VISIBLE:
-            return { ...state, visible: action.value, msg: action.msg };
+            return { ...state, visible: action.value, msg: action.msg, success: action.success };
         default:
             return state;
     }

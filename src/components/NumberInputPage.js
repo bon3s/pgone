@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Button from './common/Button';
 import Header from './common/Header';
 import NumberInput from './NumberInput';
@@ -29,18 +29,25 @@ class NumberInputPage extends Component {
         return (
             <View>
                 <Header headerText="pg_one" />
-                <Prompt />
-                <NumberInput onError={(visible, value) => {
-                    this.props.dispatch(promptVisible(visible, value));
-                }} onChange={(text) => {
-                    this.props.dispatch(setNumberInput(text));
-                }}
-                    value={this.props.numberInput} />
-                <Button onPress={this.handleButtonPress}>Next</Button>
+                <View style={styles.containerStyle}>
+                    <Prompt />
+                    <NumberInput onError={(visible, value) => {
+                        this.props.dispatch(promptVisible(visible, value, false));
+                    }} onChange={(text) => {
+                        this.props.dispatch(setNumberInput(text));
+                    }}
+                        value={this.props.numberInput} />
+                    <Button onPress={this.handleButtonPress}>Next</Button>
+                </View>
             </View>
         );
     }
 }
+const styles = StyleSheet.create({
+    containerStyle: {
+        padding: 15
+    }
+});
 
 const mapStateToProps = (state) => ({
     numberInput: state.numberInputReducer.numberInput

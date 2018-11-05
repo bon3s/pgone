@@ -9,10 +9,14 @@ const initialState = {
     },
     promptReducer: {
         visible: false,
-        msg: ''
+        msg: '',
+        success: false,
     },
     customTextInputReducer: {
         customTextInput: ''
+    },
+    modalReducer: {
+        visible: false
     }
 }
 
