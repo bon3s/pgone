@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import Button from './common/Button';
 import Header from './common/Header';
 import NumberInput from './NumberInput';
@@ -31,6 +31,7 @@ class NumberInputPage extends Component {
                 <Header headerText="pg_one" />
                 <View style={styles.containerStyle}>
                     <Prompt />
+                    <Text style={styles.textStyle}>Enter a number between 1 and 23</Text>
                     <NumberInput onError={(visible, value) => {
                         this.props.dispatch(promptVisible(visible, value, false));
                     }} onChange={(text) => {
@@ -46,7 +47,16 @@ class NumberInputPage extends Component {
 const styles = StyleSheet.create({
     containerStyle: {
         padding: 15
+    },
+    textStyle: {
+        color: '#000000',
+        padding: 15,
+        fontSize: 14,
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center'
     }
+
 });
 
 const mapStateToProps = (state) => ({

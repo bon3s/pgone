@@ -23,7 +23,6 @@ class Prompt extends Component {
                     </View>
                 );
             }
-
         }
         return <View />;
     }
