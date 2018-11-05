@@ -13,12 +13,17 @@ class NumberInput extends Component {
     }
 
     validateInput(text) {
-        const reg = /^\d+$/;
-        if (reg.test(text)) {
-            this.props.onChange(text);
+        const reg = /^\d+$\b/;
+        if (text.length === 0) {
+            this.props.onChange(text)
         }
         else {
-            this.props.onError(true, "You can enter only numbers!");
+            if (reg.test(text)) {
+                this.props.onChange(text);
+            }
+            else {
+                this.props.onError(true, "You can enter only numbers!");
+            }
         }
     }
     render() {

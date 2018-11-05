@@ -2,14 +2,19 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import BackButton from './BackButton';
+import { connect } from 'react-redux';
+import { promptVisible } from '../../actions/promptActions';
 
 
-const HeaderAlt = ({ history, headerText }) => {
+const HeaderAlt = ({ history, headerText, dispatch }) => {
     const { textStyle, viewStyle } = styles;
 
     return (
         <View style={viewStyle}>
-            <BackButton onPress={() => { history.goBack() }} />
+            <BackButton onPress={() => {
+                history.goBack();
+                dispatch(promptVisible(false, '', false));
+            }} />
             <Text style={textStyle}>{headerText}</Text>
         </View>
     );
@@ -35,4 +40,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default HeaderAlt;
+export default connect()(HeaderAlt);

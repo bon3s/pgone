@@ -19,13 +19,14 @@ class CustomTextInputPage extends Component {
     }
 
     sendRequest() {
-        this.props.dispatch(modalVisible(true));
+
         if (this.props.customTextInput != '' && this.props.customTextInput != null) {
+
             const body = {
                 "count": this.props.numberInput,
                 "string": this.props.customTextInput
             };
-
+            this.props.dispatch(modalVisible(true));
             fetch(
                 'http://192.168.1.105:2323', {
                     method: 'POST',
