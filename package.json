@@ -29,6 +29,7 @@
     "eslint-plugin-react": "7.11.0",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.48.1",
+    "react-native-vector-icons": "^6.0.2",
     "react-test-renderer": "16.6.0-alpha.8af6728"
   },
   "jest": {

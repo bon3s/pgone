@@ -33,7 +33,7 @@ class NumberInputPage extends Component {
                     <Prompt />
                     <Text style={styles.textStyle}>Enter a number between 1 and 23</Text>
                     <NumberInput onError={(visible, value) => {
-                        this.props.dispatch(promptVisible(visible, value, false));
+                        this.props.dispatch(promptVisible(visible, value));
                     }} onChange={(text) => {
                         this.props.dispatch(setNumberInput(text));
                     }}

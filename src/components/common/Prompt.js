@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/AntDesign';
+import { promptVisible } from '../../actions/promptActions';
 
 class Prompt extends Component {
     render() {
         if (this.props.visible) {
-            if (this.props.success) {
-                return (
-                    <View style={styles.viewStyleSuccess}>
-                        <Text style={styles.textStyleSuccess}>
-                            {this.props.msg}
-                        </Text>
-                    </View>
-                );
-            }
-            else {
-                return (
-                    <View style={styles.viewStyleFail}>
-                        <Text style={styles.textStyleFail}>
-                            {this.props.msg}
-                        </Text>
-                    </View>
-                );
-            }
+            return (
+                <View style={styles.viewStyleFail}>
+                    <TouchableOpacity style={styles.closeButton} onPress={() => { this.props.dispatch(promptVisible(false, '')) }}><Icon name="close" size={15} color="#aaaaaa" /></TouchableOpacity>
+                    <Text style={styles.textStyleFail}>
+                        {String(this.props.msg)}
+                    </Text>
+                </View>
+            );
         }
         return <View />;
     }
@@ -38,28 +30,20 @@ const styles = StyleSheet.create({
         borderColor: '#ff0000',
         borderRadius: 5,
     },
-    viewStyleSuccess: {
-        paddingVertical: 15,
-        paddingHorizontal: 35,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: '#007F00',
-        borderRadius: 5,
-    },
     textStyleFail: {
         color: '#ff0000',
         fontSize: 14,
+        textAlign: 'center'
     },
-    textStyleSuccess: {
-        color: '#007F00',
-        fontSize: 14,
+    closeButton: {
+        position: 'absolute',
+        top: 5,
+        right: 5,
     }
 });
 
 const mapStateToProps = (state) => ({
     visible: state.promptReducer.visible,
-    success: state.promptReducer.success,
     msg: state.promptReducer.msg,
 });
 

@@ -19,7 +19,12 @@ class NumberInput extends Component {
         }
         else {
             if (reg.test(text)) {
-                this.props.onChange(text);
+                if (Number(text) <= 23) {
+                    this.props.onChange(text);
+                }
+                else {
+                    this.props.onError(true, "You can't enter a number higher than 23.");
+                }
             }
             else {
                 this.props.onError(true, "You can enter only numbers!");

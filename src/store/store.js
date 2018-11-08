@@ -13,11 +13,12 @@ const initialState = {
         success: false,
     },
     customTextInputReducer: {
-        customTextInput: ''
+        customTextInput: '',
+        result: ''
     },
     modalReducer: {
         visible: false
     }
 }
 
-export const store = createStore(rootReducer, initialState, composeWithDevTools())
+export const store = createStore(rootReducer, initialState, composeWithDevTools());
