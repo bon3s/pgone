@@ -33,16 +33,12 @@ class CustomTextInputPage extends Component {
         string: this.props.customTextInput
       };
 
-      // const myHeaders = {
-      //   "Content-Type": "application/json",
-      //   type: "cors", //no-cors for no-cors flag on server
-      //   auth: "marko1234"
-      // };
-
-      myHeaders = new Headers({
+      const myHeaders = {
         "Content-Type": "application/json",
-        password: "marko1234"
-      });
+        type: "cors", //no-cors for no-cors flag on server
+        'X-Auth-Token': "marko1234"
+
+      };
 
       const options = {
         method: "POST",
@@ -69,9 +65,9 @@ class CustomTextInputPage extends Component {
                   promptVisible(
                     true,
                     responseData.message +
-                      "." +
-                      "\n\nRequest_id:\n\n" +
-                      responseData.request_id
+                    "." +
+                    "\n\nRequest_id:\n\n" +
+                    responseData.request_id
                   )
                 );
               }
