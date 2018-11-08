@@ -3,7 +3,6 @@ import { View, StyleSheet, Text } from 'react-native';
 import { connect } from 'react-redux';
 import Button from './common/Button';
 
-
 class ResultPage extends Component {
     constructor() {
         super();
