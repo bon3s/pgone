@@ -8,6 +8,7 @@ import Prompt from './common/Prompt';
 import { connect } from 'react-redux';
 import { setNumberInput } from '../actions/numberInputActions';
 import { promptVisible } from '../actions/promptActions';
+import UniversalInput from './UniversalInput';
 
 class NumberInputPage extends Component {
     constructor() {
@@ -32,12 +33,13 @@ class NumberInputPage extends Component {
                 <View style={styles.containerStyle}>
                     <Prompt />
                     <Text style={styles.textStyle}>Enter a number between 1 and 23</Text>
-                    <NumberInput onError={(visible, value) => {
+                    {/* <NumberInput onError={(visible, value) => {
                         this.props.dispatch(promptVisible(visible, value));
                     }} onChange={(text) => {
                         this.props.dispatch(setNumberInput(text));
                     }}
-                        value={this.props.numberInput} />
+                        value={this.props.numberInput} /> */}
+                    <UniversalInput inputType='number' maxLength={23} onValueChange={(text) => { this.props.dispatch(setNumberInput(text)) }} value={this.props.numberInput} />
                     <Button onPress={this.handleButtonPress}>Next</Button>
                 </View>
             </View>

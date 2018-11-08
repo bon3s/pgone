@@ -14,6 +14,7 @@ import {
 } from "../actions/customTextInputActions";
 import { modalVisible } from "../actions/modalActions";
 import fetch from "./FetchWithTimeout";
+import UniversalInput from "./UniversalInput";
 
 class CustomTextInputPage extends Component {
   constructor() {
@@ -53,8 +54,6 @@ class CustomTextInputPage extends Component {
           fetch("http://192.168.1.104:2323", options, 30000)
             .then(response => response.json())
             .then(responseData => {
-              console.log(responseData);
-
               if (responseData.result) {
                 this.props.dispatch(modalVisible(false));
                 this.props.dispatch(setResult(responseData.result));
@@ -73,7 +72,6 @@ class CustomTextInputPage extends Component {
               }
             })
             .catch(error => {
-              console.log(error);
               this.props.dispatch(modalVisible(false));
               this.props.dispatch(promptVisible(true, error));
             });
@@ -100,7 +98,7 @@ class CustomTextInputPage extends Component {
           <Text style={styles.textStyle}>
             Enter a word with a maximum of 23 characters.
           </Text>
-          <CustomTextInput
+          {/* <CustomTextInput
             onError={(visible, value) => {
               this.props.dispatch(promptVisible(visible, value));
             }}
@@ -114,7 +112,8 @@ class CustomTextInputPage extends Component {
               }
             }}
             value={this.props.customTextInput}
-          />
+          /> */}
+          <UniversalInput inputType='text' maxLength={23} onValueChange={(text) => { this.props.dispatch(setCustomTextInput(text)) }} value={this.props.customTextInput} />
 
           <Button onPress={this.sendRequest}>Send</Button>
         </View>
