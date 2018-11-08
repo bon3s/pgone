@@ -113,8 +113,7 @@ class CustomTextInputPage extends Component {
             }}
             value={this.props.customTextInput}
           /> */}
-          <UniversalInput inputType='text' maxLength={23} onValueChange={(text) => { this.props.dispatch(setCustomTextInput(text)) }} value={this.props.customTextInput} />
-
+          <UniversalInput inputType='text' maxLength={23} onValueChange={(text) => { this.props.dispatch(setCustomTextInput(text)) }} value={this.props.customTextInput} onError={(text) => this.props.dispatch(promptVisible(true, text))} />
           <Button onPress={this.sendRequest}>Send</Button>
         </View>
       </View>

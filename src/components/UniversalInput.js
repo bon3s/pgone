@@ -4,9 +4,6 @@ import {
     TextInput,
     StyleSheet
 } from 'react-native';
-import { connect } from 'react-redux';
-import { promptVisible } from '../actions/promptActions';
-
 
 class UniversalInput extends Component {
 
@@ -25,11 +22,11 @@ class UniversalInput extends Component {
                     this.props.onValueChange(text);
                 }
                 else {
-                    this.props.dispatch(promptVisible(true, "You can't enter a number higher than " + this.props.maxLength));
+                    this.props.onError("You can't enter a number higher than " + this.props.maxLength);
                 }
             }
             else {
-                this.props.dispatch(promptVisible(true, "You can enter only numbers!"));
+                this.props.onError("You can enter only numbers!");
             }
         }
     }
@@ -42,8 +39,8 @@ class UniversalInput extends Component {
             if (text.length < this.props.maxLength) {
                 this.props.onValueChange(text);
             } else {
-                this.props.dispatch(
-                    promptVisible(true, "You can enter a max of " + this.props.maxLength + "characters.")
+                this.props.onError(
+                    "You can enter a max of " + this.props.maxLength + " characters."
                 );
             }
         }
@@ -93,4 +90,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect()(UniversalInput);
+export default UniversalInput;

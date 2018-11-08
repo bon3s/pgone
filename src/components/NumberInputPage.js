@@ -39,7 +39,7 @@ class NumberInputPage extends Component {
                         this.props.dispatch(setNumberInput(text));
                     }}
                         value={this.props.numberInput} /> */}
-                    <UniversalInput inputType='number' maxLength={23} onValueChange={(text) => { this.props.dispatch(setNumberInput(text)) }} value={this.props.numberInput} />
+                    <UniversalInput inputType='number' onError={(text) => this.props.dispatch(promptVisible(true, text))} maxLength={23} onValueChange={(text) => { this.props.dispatch(setNumberInput(text)) }} value={this.props.numberInput} />
                     <Button onPress={this.handleButtonPress}>Next</Button>
                 </View>
             </View>
