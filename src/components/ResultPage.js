@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     buttonStyle: {
         margin: 10
     }
-
 });
 
 const mapStateToProps = (state) => ({
