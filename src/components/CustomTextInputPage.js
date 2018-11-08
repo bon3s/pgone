@@ -13,8 +13,8 @@ import {
   setResult
 } from "../actions/customTextInputActions";
 import { modalVisible } from "../actions/modalActions";
-import fetch from "./FetchWithTimeout";
 import UniversalInput from "./UniversalInput";
+import service from "../service/Service";
 
 class CustomTextInputPage extends Component {
   constructor() {
@@ -38,7 +38,6 @@ class CustomTextInputPage extends Component {
         "Content-Type": "application/json",
         type: "cors", //no-cors for no-cors flag on server
         'X-Auth-Token': "marko1234"
-
       };
 
       const options = {
@@ -51,7 +50,7 @@ class CustomTextInputPage extends Component {
       this.props.dispatch(modalVisible(true));
       NetInfo.isConnected.fetch().then(isConnected => {
         if (isConnected) {
-          fetch("http://192.168.1.104:2323", options, 30000)
+          service.getText(this.props.numberInput, this.props.customTextInput)
             .then(response => response.json())
             .then(responseData => {
               if (responseData.result) {
@@ -113,7 +112,12 @@ class CustomTextInputPage extends Component {
             }}
             value={this.props.customTextInput}
           /> */}
-          <UniversalInput inputType='text' maxLength={23} onValueChange={(text) => { this.props.dispatch(setCustomTextInput(text)) }} value={this.props.customTextInput} onError={(text) => this.props.dispatch(promptVisible(true, text))} />
+          <UniversalInput inputType='text'
+            maxLength={23}
+            onValueChange={(text) => { this.props.dispatch(setCustomTextInput(text)) }}
+            value={this.props.customTextInput}
+            onError={(text) => this.props.dispatch(promptVisible(true, text))} />
+
           <Button onPress={this.sendRequest}>Send</Button>
         </View>
       </View>
