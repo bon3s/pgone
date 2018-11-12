@@ -37,7 +37,7 @@ class CustomTextInputPage extends Component {
       const myHeaders = {
         "Content-Type": "application/json",
         type: "cors", //no-cors for no-cors flag on server
-        'X-Auth-Token': "marko1234"
+        "X-Auth-Token": "marko1234"
       };
 
       const options = {
@@ -48,39 +48,33 @@ class CustomTextInputPage extends Component {
       };
 
       this.props.dispatch(modalVisible(true));
-      NetInfo.isConnected.fetch().then(isConnected => {
-        if (isConnected) {
-          service.getText(this.props.numberInput, this.props.customTextInput)
-            .then(response => response.json())
-            .then(responseData => {
-              if (responseData.result) {
-                this.props.dispatch(modalVisible(false));
-                this.props.dispatch(setResult(responseData.result));
-                this.props.history.push("/ResultPage");
-              } else {
-                this.props.dispatch(modalVisible(false));
-                this.props.dispatch(
-                  promptVisible(
-                    true,
-                    responseData.message +
-                    "." +
-                    "\n\nRequest_id:\n\n" +
-                    responseData.request_id
-                  )
-                );
-              }
-            })
-            .catch(error => {
-              this.props.dispatch(modalVisible(false));
-              this.props.dispatch(promptVisible(true, error));
-            });
-        } else {
+      service
+        .getText(this.props.numberInput, this.props.customTextInput)
+        .then(res => {
+          const responseData = JSON.parse(res._bodyInit);
+          console.log(responseData);
+          if (responseData.result) {
+            this.props.dispatch(modalVisible(false));
+            this.props.dispatch(setResult(responseData.result));
+            this.props.history.push("/ResultPage");
+          } else {
+            this.props.dispatch(modalVisible(false));
+            this.props.dispatch(
+              promptVisible(
+                true,
+                responseData.message +
+                  "." +
+                  "\n\nRequest_id:\n\n" +
+                  responseData.request_id
+              )
+            );
+          }
+        })
+        .catch(error => {
           this.props.dispatch(modalVisible(false));
-          this.props.dispatch(
-            promptVisible(true, "You are offline or the server is unreachable.")
-          );
-        }
-      });
+          this.props.dispatch(promptVisible(true, error));
+        })
+        .catch(e => console.log(e));
     } else {
       this.props.dispatch(
         promptVisible(true, "Field cannot be empty or have more than 23 digits")
@@ -112,11 +106,15 @@ class CustomTextInputPage extends Component {
             }}
             value={this.props.customTextInput}
           /> */}
-          <UniversalInput inputType='text'
+          <UniversalInput
+            inputType="text"
             maxLength={23}
-            onValueChange={(text) => { this.props.dispatch(setCustomTextInput(text)) }}
+            onValueChange={text => {
+              this.props.dispatch(setCustomTextInput(text));
+            }}
             value={this.props.customTextInput}
-            onError={(text) => this.props.dispatch(promptVisible(true, text))} />
+            onError={text => this.props.dispatch(promptVisible(true, text))}
+          />
 
           <Button onPress={this.sendRequest}>Send</Button>
         </View>
